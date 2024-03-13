@@ -5,9 +5,9 @@ import paymentIcon from "./assets/Payment method icon.png";
 import Textarea from "./components/Textarea/Textarea";
 import ToggleButton from "./components/ToggleButton/ToggleButton";
 import InputField from "./components/InputField/InputField/InputField";
+import Checkbox from "./components/Checkbox/Checkbox";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [email, setEmail] = useState("");
 
   const handleEmailChange = (e) => {
@@ -24,6 +24,7 @@ function App() {
       ></InputField>
       <Textarea label="Write your message here"></Textarea>
       <ToggleButton></ToggleButton>
+      <Checkbox></Checkbox>
     </div>
   );
 }

@@ -13,51 +13,79 @@ const ToggleButton = ({
   disabled,
   type,
 }) => {
-  let background = "";
-  let checkedBackground = "";
+  let checkedBackground;
+  let sizeClass;
+
+  switch (size) {
+    case "small":
+      sizeClass =
+        "w-9 h-5 after:top-[2px] after:start-[2px] after:h-4 after:w-4";
+      break;
+    case "medium":
+      sizeClass =
+        "w-11 h-6 after:top-[2px] after:start-[2px] after:h-5 after:w-5";
+      break;
+    case "large":
+      sizeClass =
+        "w-9 h-5 after:top-[4px] after:start-[4px] after:h-6 after:w-6";
+    default:
+      sizeClass =
+        "w-11 h-6 after:top-[2px] after:start-[2px] after:h-5 after:w-5";
+  }
 
   switch (type) {
     case "primary":
-      ringColor = "bg-blue-400 hover:bg-blue-600";
+      checkedBackground = "peer-checked:bg-blue-600";
       break;
     case "secondary":
-      typeClasses = "bg-gray-400 hover:bg-gray-600";
+      checkedBackground = "peer-checked:bg-gray-600";
       break;
     case "success":
-      typeClasses = "bg-green-400 hover:bg-green-600";
+      checkedBackground = "peer-checked:bg-green-600";
       break;
     case "danger":
-      typeClasses = "bg-red-400 hover:bg-red-600";
+      checkedBackground = "peer-checked:bg-red-600";
       break;
     case "warning":
-      typeClasses = "bg-yellow-400 hover:bg-yellow-600";
+      checkedBackground = "peer-checked:bg-yellow-600";
       break;
     case "info":
-      typeClasses = "bg-sky-400 hover:bg-sky-600";
+      checkedBackground = "peer-checked:bg-sky-600";
       break;
     case "light":
-      typeClasses = "bg-white hover:bg-gray-100";
+      checkedBackground = "peer-checked:bg-white";
       break;
     case "dark":
-      typeClasses = "bg-black-400 hover:bg-black-100";
+      checkedBackground = "peer-checked:bg-black";
       break;
     default:
-      typeClasses = "bg-gray-400 hover:bg-gray-600";
+      checkedBackground = "peer-checked:bg-blue-600";
   }
   return (
-    <div>
-      <label className="inline-flex items-center cursor-pointer">
-        <input type="checkbox" value="" className="sr-only peer" />
-        <div className="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F3F8FF] rounded-full peer peer-checked:after:translate-x-full  peer-checked:after:border-white after:content-[''] after:absolute after:top-[7%] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
-        {label && (
-          <span
-            className={`ms-3 text-sm font-medium text-gray-900 ${labelClass}`}
-          >
-            Toggle
-          </span>
-        )}
-      </label>
-    </div>
+    <label className="inline-flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        required={required}
+        onChange={onChange}
+        value={value}
+        disabled={disabled}
+        className="sr-only peer"
+        checked={checked}
+        size={size}
+      />
+      <div
+        className={`relative bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F3F8FF] rounded-full peer peer-checked:after:translate-x-full  peer-checked:after:border-white after:content-[''] after:absolute  after:bg-white after:border-gray-300 after:border after:rounded-full  after:transition-all ${checkedBackground} ${sizeClass}`}
+      ></div>
+      {label && (
+        <span
+          className={`ms-3 text-sm font-medium text-gray-900 ${labelClass}`}
+        >
+          Toggle
+        </span>
+      )}
+    </label>
   );
 };
 
