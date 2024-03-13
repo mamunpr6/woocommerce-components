@@ -2,7 +2,7 @@ import React from "react";
 
 const RadioButton = ({
   label = "Accept terms",
-  className,
+  className = "",
   parentClass,
   labelClass = "",
   value,
@@ -13,7 +13,7 @@ const RadioButton = ({
   size,
   checked,
   disabled,
-  type,
+  type = "success",
 }) => {
   let sizeClass = "";
   let color = "";
@@ -75,7 +75,7 @@ const RadioButton = ({
   return (
     <div className={`flex gap-2 ${parentClass}`}>
       <input
-        className={`relative peer rounded-[50%] shrink-0 appearance-none border disabled:border-[#EAECF0] bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 ${sizeClass} ${color}`}
+        className={`relative peer rounded-[50%] shrink-0 appearance-none border disabled:border-[#EAECF0] bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 ${sizeClass} ${color} ${className}`}
         type="radio"
         id={id}
         value={value}
@@ -95,7 +95,7 @@ const RadioButton = ({
         </label>
       )}
       <span
-        className={`absolute mt-1 p-1 hidden peer-checked:block pointer-events-none ${iconColor} disabled:peer-checked:text-[#EAECF0] ${sizeClass} `}
+        className={`absolute mt-1 p-1 hidden peer-checked:block pointer-events-none disabled:peer-checked:text-[#EAECF0] ${iconColor} ${sizeClass} `}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

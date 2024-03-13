@@ -7,6 +7,7 @@ import ToggleButton from "./components/ToggleButton/ToggleButton";
 import InputField from "./components/InputField/InputField/InputField";
 import Checkbox from "./components/Checkbox/Checkbox";
 import RadioButton from "./components/RadioButton/RadioButton";
+import Button from "./components/Button/Button";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -23,12 +24,15 @@ function App() {
         onChange={handleEmailChange}
         label="Email"
       ></InputField>
+      <Button>
+        <span>Button CTA</span>
+        <span> </span>
+      </Button>
       <Textarea></Textarea>
       <ToggleButton></ToggleButton>
-      <Checkbox></Checkbox>
-      <Checkbox></Checkbox>
-      <RadioButton></RadioButton>
-      <RadioButton></RadioButton>
+      <Checkbox id="check"></Checkbox>
+      <RadioButton name="radio"></RadioButton>
+      <RadioButton name="radio2"></RadioButton>
     </div>
   );
 }

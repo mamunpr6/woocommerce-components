@@ -88,7 +88,7 @@ const Checkbox = ({
       <input
         className={`relative peer shrink-0 appearance-none border border-[#E1E6EF] disabled:border-[#EAECF0] rounded bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 focus:ring-[#E8F1FF] focus:border-[#216DF0] ${sizeClass} ${
           rounded && `rounded-[50%] p-0.5 ${checkedBackground}`
-        } ${color}`}
+        } ${color} ${className}`}
         type="checkbox"
         id={id}
         value={value}
@@ -107,20 +107,23 @@ const Checkbox = ({
           {label}
         </label>
       )}
-      <svg
+      <span
         className={`absolute mt-1 p-0.5 hidden peer-checked:block pointer-events-none ${
           rounded ? "peer-checked:text-white" : iconColor
         } disabled:peer-checked:text-[#EAECF0] ${sizeClass} `}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       >
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
     </div>
   );
 };
