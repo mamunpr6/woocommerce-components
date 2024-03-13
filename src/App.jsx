@@ -6,6 +6,7 @@ import Textarea from "./components/Textarea/Textarea";
 import ToggleButton from "./components/ToggleButton/ToggleButton";
 import InputField from "./components/InputField/InputField/InputField";
 import Checkbox from "./components/Checkbox/Checkbox";
+import RadioButton from "./components/RadioButton/RadioButton";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -22,9 +23,12 @@ function App() {
         onChange={handleEmailChange}
         label="Email"
       ></InputField>
-      <Textarea label="Write your message here"></Textarea>
+      <Textarea></Textarea>
       <ToggleButton></ToggleButton>
       <Checkbox></Checkbox>
+      <Checkbox></Checkbox>
+      <RadioButton></RadioButton>
+      <RadioButton></RadioButton>
     </div>
   );
 }
