@@ -9,6 +9,14 @@ const InputField = memo((props) => {
     placeholder = "",
     required = true,
     onChange,
+    onClick,
+    onBlur,
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
+    onKeyDown,
+    onKeyUp,
+    onSubmit,
     label = "Enter your email",
     className = "",
     parentClass = "",
@@ -34,7 +42,7 @@ const InputField = memo((props) => {
     tooltipIcon,
     errorTooltipIcon,
     iconPosition = "left",
-  } = { props };
+  } = props;
 
   // input type props checking
   const validInputTypes = ["text", "password", "number", "email"];
@@ -51,23 +59,22 @@ const InputField = memo((props) => {
   };
 
   return (
-    <div className={`relative ${parentClass}`}>
+    <div className={`${parentClass}`}>
       {label && (
         <label
-          className={`block mb-2 text-sm font-medium text-[#2D384B] ${labelClass}`}
+          className={`block mb-2 text-sm lg:text-base font-medium text-[#2D384B] ${labelClass}`}
         >
           {label}
         </label>
       )}
 
-      <div className="relative">
+      <div className="relative block">
         {/* input icon */}
         {inputIcon && (
           <span
             className={`absolute flex justify-center items-center w-4 h-4 top-1/2 transform -translate-y-1/2 text-gray-400 ${
               iconPosition === "left" && "left-4"
             } ${iconPosition === "right" && "right-8"}`}
-            alt="input-icon"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -95,7 +102,7 @@ const InputField = memo((props) => {
         {/* tooltip message and error tooltip message */}
         {showTooltip && (
           <p
-            className={`absolute -top-5 right-0 text-xs text-end duration-300 ${
+            className={`absolute -top-5 right-0 text-xs md:text-sm text-end duration-300 ${
               errorTooltipText ? "text-[#F04438]" : "text-[#475467]"
             }`}
           >
@@ -109,23 +116,31 @@ const InputField = memo((props) => {
           id={id}
           placeholder={placeholder}
           required={required}
-          onChange={onChange}
           defaultChecked={checked}
           disabled={disabled}
           min={min}
           max={max}
-          className={`block w-96 px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm ${
+          onChange={onChange}
+          onClick={onClick}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          onSubmit={onSubmit}
+          className={`block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm ${
             iconPosition === "left" && "ps-10"
           } ${iconPosition === "right" && "pe-6"} ${
             errorMessage
               ? " border-[#FDA29B] focus:border-[#FDA29B] focus:ring-4 focus:ring-[#FEE4E2] "
               : "border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF]"
-          }  ${className}`}
+          } ${className} `}
         />
       </div>
 
       {errorMessage && (
-        <p className={`mt-2 text-sm text-red-500 ${errorMessageClass}`}>
+        <p className={`mt-1 md:mt-2 text-sm text-red-500 ${errorMessageClass}`}>
           {errorMessage}
         </p>
       )}
