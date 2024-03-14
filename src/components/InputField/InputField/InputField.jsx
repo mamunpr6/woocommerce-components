@@ -1,37 +1,55 @@
-import React, { useState } from "react";
-import tooltipIcon from "../../../assets/Icon.png";
-import errorIcon from "../../../assets/error-icon.png";
-import icon from "../../../assets/mail.png";
+import React, { memo, useState } from "react";
 
-const InputField = ({
-  type = "text",
-  value,
-  id,
-  name,
-  placeholder = "",
-  required,
-  errorMessage,
-  onChange,
-  label,
-  className,
-  parentClass = "",
-  labelClass = "",
-  checked = false,
-  disabled = false,
-  tooltip = "",
-  errorTooltip = "",
-  min,
-  max,
-  inputIcon,
-  iconPosition,
-}) => {
+const InputField = memo((props) => {
+  const {
+    inputType = "email",
+    value,
+    id = "email",
+    name = "email",
+    placeholder = "",
+    required = true,
+    onChange,
+    label = "Enter your email",
+    className = "",
+    parentClass = "",
+    labelClass = "",
+    errorMessageClass = "",
+    checked = false,
+    disabled = false,
+    tooltipText = "Enter your valid email",
+    errorMessage,
+    errorTooltipText,
+    min,
+    max,
+    inputIcon = (
+      <>
+        <svg viewBox="0 0 8 6" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill="currentColor"
+            d="m0 0h8v6h-8zm.75 .75v4.5h6.5v-4.5zM0 0l4 3 4-3v1l-4 3-4-3z"
+          />
+        </svg>
+      </>
+    ),
+    tooltipIcon,
+    errorTooltipIcon,
+    iconPosition = "left",
+  } = { props };
+
+  // input type props checking
+  const validInputTypes = ["text", "password", "number", "email"];
+  const validInput = validInputTypes.includes(inputType) ? inputType : "text";
+
+  // tooltip events onMouseEnter
   const [showTooltip, setShowtooltip] = useState(false);
+
   const handleMouseEnter = () => {
     setShowtooltip(true);
   };
   const handleMouseLeave = () => {
     setShowtooltip(false);
   };
+
   return (
     <div className={`relative ${parentClass}`}>
       {label && (
@@ -45,46 +63,47 @@ const InputField = ({
       <div className="relative">
         {/* input icon */}
         {inputIcon && (
-          <img
-            className={`absolute w-4 h-4 top-1/2 transform -translate-y-1/2 ${
+          <span
+            className={`absolute flex justify-center items-center w-4 h-4 top-1/2 transform -translate-y-1/2 text-gray-400 ${
               iconPosition === "left" && "left-4"
             } ${iconPosition === "right" && "right-8"}`}
-            src={inputIcon}
             alt="input-icon"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          />
+          >
+            {inputIcon}
+          </span>
         )}
         {/* tooltip icon and error icon */}
-        {errorMessage ? (
-          <img
-            className="absolute w-4 h-4 top-1/2 transform -translate-y-1/2 right-3"
-            src={errorIcon}
-            alt="error-icon"
+        {errorMessage && errorTooltipIcon ? (
+          <span
+            className="absolute flex justify-center items-center w-4 h-4 top-1/2 transform -translate-y-1/2 right-3 text-red-500"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          />
+          >
+            {errorTooltipIcon}
+          </span>
         ) : (
-          <img
-            className="absolute w-4 h-4 top-1/2 transform -translate-y-1/2 right-3"
-            src={tooltipIcon}
-            alt="tooltip icon"
+          <span
+            className="absolute  flex justify-center items-center w-4 h-4 top-1/2 transform -translate-y-1/2 right-3 text-gray-400"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          />
+          >
+            {tooltipIcon}
+          </span>
         )}
-        {/* tooltip message */}
+        {/* tooltip message and error tooltip message */}
         {showTooltip && (
           <p
             className={`absolute -top-5 right-0 text-xs text-end duration-300 ${
-              errorMessage ? "text-[#F04438]" : "text-[#475467]"
+              errorTooltipText ? "text-[#F04438]" : "text-[#475467]"
             }`}
           >
-            {errorMessage ? errorTooltip : tooltip}
+            {errorTooltipText ? errorTooltipText : tooltipText}
           </p>
         )}
         <input
-          type={type}
+          type={validInput}
           value={value}
           name={name}
           id={id}
@@ -106,10 +125,12 @@ const InputField = ({
       </div>
 
       {errorMessage && (
-        <p className="mt-2 text-sm text-red-500">{errorMessage}</p>
+        <p className={`mt-2 text-sm text-red-500 ${errorMessageClass}`}>
+          {errorMessage}
+        </p>
       )}
     </div>
   );
-};
+});
 
 export default InputField;
