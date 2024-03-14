@@ -24,6 +24,8 @@ const ToggleButton = memo((props) => {
   } = props;
   let checkedBackground;
   let sizeClass;
+  let toggleButtonClass =
+    "relative bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F3F8FF] rounded-full peer peer-checked:after:translate-x-full  peer-checked:after:border-white after:content-[''] after:absolute  after:bg-white after:border-gray-300 after:border after:rounded-full  after:transition-all";
 
   switch (size) {
     case "small":
@@ -93,7 +95,7 @@ const ToggleButton = memo((props) => {
         size={size}
       />
       <div
-        className={`relative bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F3F8FF] rounded-full peer peer-checked:after:translate-x-full  peer-checked:after:border-white after:content-[''] after:absolute  after:bg-white after:border-gray-300 after:border after:rounded-full  after:transition-all ${checkedBackground} ${sizeClass}`}
+        className={`${toggleButtonClass} ${checkedBackground} ${sizeClass}`}
       ></div>
       {label && (
         <span

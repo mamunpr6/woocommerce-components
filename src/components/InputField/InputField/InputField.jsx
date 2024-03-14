@@ -44,6 +44,9 @@ const InputField = memo((props) => {
     iconPosition = "left",
   } = props;
 
+  let inputFieldClass =
+    "block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm";
+
   // input type props checking
   const validInputTypes = ["text", "password", "number", "email"];
   const validInput = validInputTypes.includes(inputType) ? inputType : "text";
@@ -129,7 +132,7 @@ const InputField = memo((props) => {
           onKeyDown={onKeyDown}
           onKeyUp={onKeyUp}
           onSubmit={onSubmit}
-          className={`block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm ${
+          className={`${inputFieldClass} ${
             iconPosition === "left" && "ps-10"
           } ${iconPosition === "right" && "pe-6"} ${
             errorMessage

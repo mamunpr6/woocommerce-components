@@ -27,6 +27,8 @@ const Textarea = memo((props) => {
     rows = 10,
     cols = 30,
   } = props;
+  let textareaClass =
+    "block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm lg:text-base text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm";
   return (
     <div className={`relative ${parentClass}`}>
       {label && (
@@ -58,7 +60,7 @@ const Textarea = memo((props) => {
           max={max}
           rows={rows}
           cols={cols}
-          className={`block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm lg:text-base text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm ${
+          className={`${textareaClass} ${
             errorMessage
               ? " border-[#FDA29B] focus:border-[#FDA29B] focus:ring-4 focus:ring-[#FEE4E2] "
               : "border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF]"

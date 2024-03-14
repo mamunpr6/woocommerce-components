@@ -24,6 +24,8 @@ const RadioButton = memo((props) => {
     disabled = false,
     radioType = "danger",
   } = props;
+  let inputClass =
+    "relative peer rounded-[50%] shrink-0 appearance-none border disabled:border-[#EAECF0] bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4";
   let sizeClass = "";
   let color = "";
   let iconColor = "";
@@ -84,7 +86,7 @@ const RadioButton = memo((props) => {
   return (
     <div className={`flex items-center gap-2 ${parentClass}`}>
       <input
-        className={`relative peer rounded-[50%] shrink-0 appearance-none border disabled:border-[#EAECF0] bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 ${sizeClass} ${color} ${className}`}
+        className={`${inputClass} ${sizeClass} ${color} ${className}`}
         type="radio"
         id={id}
         value={value}

@@ -16,11 +16,13 @@ const Button = memo((props) => {
     onKeyUp,
     onSubmit,
   } = props;
+  let buttonClass =
+    "px-4 py-3 flex items-center justify-center gap-2 text-base bg-blue-400 disabled:bg-gray-300 hover:bg-blue-600 duration-300 rounded-md text-white font-semibold focus:border-2 focus:border-blue-200 focus:duration-0 outline-none";
   return (
     <button
-      className={`px-4 py-3 flex ${iconPosition === "right" && "flex-row"} ${
+      className={`${buttonClass} ${iconPosition === "right" && "flex-row"} ${
         iconPosition === "left" && "flex-row-reverse"
-      } items-center justify-center gap-2 text-base bg-blue-400 disabled:bg-gray-300 hover:bg-blue-600 duration-300 rounded-md text-white font-semibold focus:border-2 focus:border-blue-200 focus:duration-0 outline-none ${className}`}
+      }  ${className}`}
       disabled={disabled}
       onClick={onClick}
       onChange={onChange}
