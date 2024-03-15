@@ -137,7 +137,7 @@ const Checkbox = memo((props) => {
           className={`text-sm md:text-base text-[#2D384B] ${labelClass}`}
         >
           {label}
-          {required && <span className="text-red-500 ms-2">*</span>}
+          {required && <span className="text-red-500">*</span>}
         </label>
       )}
 

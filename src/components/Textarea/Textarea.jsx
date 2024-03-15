@@ -27,8 +27,10 @@ const Textarea = memo((props) => {
     rows = 10,
     cols = 30,
   } = props;
+
   let textareaClass =
     "block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm lg:text-base text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm";
+
   return (
     <div className={`relative ${parentClass}`}>
       {label && (

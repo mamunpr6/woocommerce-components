@@ -8,16 +8,13 @@ const SelectButton = memo((props) => {
   console.log(selected);
 
   return (
-    <div
-      className={` relative w-72 font-medium border border-[#E1E6EF] ${
-        open ? "rounded-t-md" : "rounded-md"
-      }`}
-    >
+    <div className={` relative`}>
       <div
+        tabIndex={0}
         onClick={() => setOpen(!open)}
-        className={` w-full p-2 text-base flex items-center justify-between ${
-          !selected && "text-[#777777]"
-        }`}
+        className={` w-full p-2 text-base flex items-center justify-between  border border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF] outline-none ${
+          open ? "rounded-t-md" : "rounded-md"
+        } ${!selected && "text-[#777777]"}`}
       >
         {selected
           ? selected?.length > 25
