@@ -5,13 +5,32 @@ const SelectButton = memo((props) => {
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
-  console.log(selected);
+  const toggleDropdown = () => {
+    setOpen(!open);
+  };
+
+  const handleSelectOption = (data) => {
+    setSelected(data?.name);
+    setOpen(false);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      toggleDropdown();
+    } else if (e.key === "Escape") {
+      setOpen(false);
+    }
+  };
 
   return (
     <div className={` relative`}>
       <div
         tabIndex={0}
-        onClick={() => setOpen(!open)}
+        onClick={toggleDropdown}
+        onKeyDown={handleKeyDown}
+        role="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
         className={` w-full p-2 text-base flex items-center justify-between  border border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF] outline-none ${
           open ? "rounded-t-md" : "rounded-md"
         } ${!selected && "text-[#777777]"}`}
@@ -39,24 +58,23 @@ const SelectButton = memo((props) => {
         </span>
       </div>
       <ul
+        role="listbox"
+        aria-labelledby="options-list"
         className={`absolute w-full border border-[#E1E6EF]  rounded-b-md z-20 max-h-60 overflow-y-auto bg-white ${
           open ? "block" : "hidden"
         } `}
       >
         {datas?.map((data) => (
           <li
-            key={data?.name}
             className={`p-2 text-sm hover:bg-sky-600 hover:text-white
               ${
                 data?.name?.toLowerCase() === selected?.toLowerCase() &&
                 "bg-[#F5F9FE] text-[#2D384B]"
               }`}
-            onClick={() => {
-              if (data?.name?.toLowerCase() !== selected.toLowerCase()) {
-                setSelected(data?.name);
-                setOpen(false);
-              }
-            }}
+            key={data?.name}
+            role="option"
+            aria-selected={data?.name === selected}
+            onClick={() => handleSelectOption(data)}
           >
             {data?.name}
           </li>

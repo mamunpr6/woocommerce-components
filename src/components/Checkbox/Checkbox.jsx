@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 
 const Checkbox = memo((props) => {
+  // destructuring props
   const {
     label = "Accept the terms",
     className = "",
@@ -10,19 +11,8 @@ const Checkbox = memo((props) => {
     id = "checkbox",
     name = "checkbox",
     required = true,
-    onChange,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-    onKeyDown,
-    onKeyUp,
-    onSubmit,
     size = "large",
     rounded = false,
-    checked = false,
-    disabled = false,
     buttonType = "primary",
     checkboxIcon = (
       <>
@@ -39,11 +29,19 @@ const Checkbox = memo((props) => {
         </svg>
       </>
     ),
+    ...attributes
   } = props;
-  let sizeClass = "";
-  let color = "";
-  let iconColor = "";
-  let checkedBackground = ""; //for rounded checkbox
+
+  let sizeClass = ""; //checkbox size
+  let color = ""; //checkbox color
+  let iconColor = ""; //checkbox icon color
+  let checkedBackground = ""; //background color for rounded checkbox
+
+  // input className
+  let inputClassName =
+    "relative peer shrink-0 appearance-none border border-[#E1E6EF] disabled:border-[#EAECF0] rounded bg-white disabled:bg-[#F2F4F7] mt-0 checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 focus:ring-[#E8F1FF] focus:border-[#216DF0] ";
+
+  // switch case to define button size
   switch (size) {
     case "small":
       sizeClass = "w-4 h-4";
@@ -58,6 +56,7 @@ const Checkbox = memo((props) => {
       sizeClass = "w-4 h-4";
   }
 
+  // switch case to define button type
   switch (buttonType) {
     case "primary":
       color = "border-[#E1E6EF] focus:ring-[#E8F1FF] focus:border-[#216DF0]";
@@ -110,7 +109,7 @@ const Checkbox = memo((props) => {
   return (
     <div className={`flex items-center gap-2 ${parentClass}`}>
       <input
-        className={`relative peer shrink-0 appearance-none border border-[#E1E6EF] disabled:border-[#EAECF0] rounded bg-white disabled:bg-[#F2F4F7] mt-0 checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4 focus:ring-[#E8F1FF] focus:border-[#216DF0] ${sizeClass} ${
+        className={`${inputClassName} ${sizeClass} ${
           rounded && `rounded-[50%] p-0.5 ${checkedBackground}`
         } ${color} ${className}`}
         type="checkbox"
@@ -118,18 +117,8 @@ const Checkbox = memo((props) => {
         value={value}
         name={name}
         required={required}
-        disabled={disabled}
-        defaultChecked={checked}
         size={size}
-        onChange={onChange}
-        onClick={onClick}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onSubmit={onSubmit}
+        {...attributes}
       />
       {label && (
         <label

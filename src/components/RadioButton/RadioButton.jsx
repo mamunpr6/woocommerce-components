@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 
 const RadioButton = memo((props) => {
+  // destructuring props
   const {
     label = "Accept terms",
     className = "",
@@ -9,26 +10,20 @@ const RadioButton = memo((props) => {
     value,
     id = "radio",
     name = "radio",
-    required = true,
-    onChange,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-    onKeyDown,
-    onKeyUp,
-    onSubmit,
     size = "large",
-    checked = false,
-    disabled = false,
     radioType = "danger",
+    ...attributes
   } = props;
+
+  // className for radio input
   let inputClass =
     "relative peer rounded-[50%] shrink-0 appearance-none border disabled:border-[#EAECF0] bg-white disabled:bg-[#F2F4F7] mt-1  checked:bg-white focus:outline-none focus:ring-offset-0 focus:ring-4";
+
   let sizeClass = "";
   let color = "";
   let iconColor = "";
+
+  //switch case to define button size
   switch (size) {
     case "small":
       sizeClass = "w-4 h-4";
@@ -43,6 +38,7 @@ const RadioButton = memo((props) => {
       sizeClass = "w-4 h-4";
   }
 
+  //switch case to define button type
   switch (radioType) {
     case "primary":
       color = "border-[#E1E6EF] focus:ring-[#E8F1FF] focus:border-[#216DF0]";
@@ -83,6 +79,7 @@ const RadioButton = memo((props) => {
         "border-[#E1E6EF] checked:bg-white focus:ring-[#E8F1FF] focus:border-[#216DF0]";
       iconColor = "peer-checked:text-[#216DF0]";
   }
+
   return (
     <div className={`flex items-center gap-2 ${parentClass}`}>
       <input
@@ -91,20 +88,10 @@ const RadioButton = memo((props) => {
         id={id}
         value={value}
         name={name}
-        required={required}
-        defaultChecked={checked}
-        disabled={disabled}
         size={size}
-        onChange={onChange}
-        onClick={onClick}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onSubmit={onSubmit}
+        {...attributes}
       />
+      {/* radio input label */}
       {label && (
         <label
           htmlFor={id}
@@ -113,6 +100,8 @@ const RadioButton = memo((props) => {
           {label}
         </label>
       )}
+
+      {/* radio input icon */}
       <span
         className={`absolute mt-1 p-1 hidden peer-checked:block pointer-events-none disabled:peer-checked:text-[#EAECF0] ${iconColor} ${sizeClass} `}
       >

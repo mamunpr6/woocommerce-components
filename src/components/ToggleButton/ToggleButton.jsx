@@ -1,32 +1,25 @@
 import React, { memo } from "react";
 
 const ToggleButton = memo((props) => {
+  // destructuring props
   const {
     label = "Toggle",
     labelClass = "",
     value,
     id = "toggle",
     name = "toggle",
-    required,
-    onChange,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-    onKeyDown,
-    onKeyUp,
-    onSubmit,
     size = "large",
-    checked,
-    disabled = false,
     buttonType = "primary",
+    ...attributes
   } = props;
-  let checkedBackground;
-  let sizeClass;
+
+  // toggle input className
   let toggleButtonClass =
     "relative bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F3F8FF] rounded-full peer peer-checked:after:translate-x-full  peer-checked:after:border-white after:content-[''] after:absolute  after:bg-white after:border-gray-300 after:border after:rounded-full  after:transition-all";
+  let checkedBackground;
+  let sizeClass;
 
+  // switch case to define button size
   switch (size) {
     case "small":
       sizeClass =
@@ -44,6 +37,7 @@ const ToggleButton = memo((props) => {
         "w-11 h-6 after:top-[2px] after:start-[2px] after:h-5 after:w-5";
   }
 
+  // switch case to define button type
   switch (buttonType) {
     case "primary":
       checkedBackground = "peer-checked:bg-blue-600";
@@ -78,25 +72,16 @@ const ToggleButton = memo((props) => {
         type="checkbox"
         id={id}
         name={name}
-        required={required}
-        onChange={onChange}
-        onClick={onClick}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onSubmit={onSubmit}
         value={value}
-        disabled={disabled}
         className="sr-only peer"
-        checked={checked}
         size={size}
+        {...attributes}
       />
       <div
         className={`${toggleButtonClass} ${checkedBackground} ${sizeClass}`}
       ></div>
+
+      {/* toggle button label */}
       {label && (
         <span
           className={`ms-3 text-sm font-medium text-gray-900 ${labelClass}`}

@@ -1,29 +1,18 @@
 import React, { memo, useState } from "react";
 
 const InputField = memo((props) => {
+  // destructuring props
   const {
     inputType = "email",
     value,
     id = "email",
     name = "email",
     placeholder = "",
-    required = true,
-    onChange,
-    onClick,
-    onBlur,
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-    onKeyDown,
-    onKeyUp,
-    onSubmit,
     label = "Enter your email",
     className = "",
     parentClass = "",
     labelClass = "",
     errorMessageClass = "",
-    checked = false,
-    disabled = false,
     tooltipText = "Enter your valid email",
     errorMessage,
     errorTooltipText,
@@ -42,8 +31,10 @@ const InputField = memo((props) => {
     tooltipIcon,
     errorTooltipIcon,
     iconPosition = "left",
+    ...attributes
   } = props;
 
+  // className for input field
   let inputFieldClass =
     "block w-full px-3 py-2.5 bg-white disabled:bg-[#F9FAFB] rounded-lg border shadow-sm placeholder:text-[#777777] focus:outline-none text-sm text-[#2D384B] font-normal placeholder:font-normal placeholder:text-sm";
 
@@ -54,15 +45,18 @@ const InputField = memo((props) => {
   // tooltip events onMouseEnter
   const [showTooltip, setShowtooltip] = useState(false);
 
+  // on mouse enter tooltip will enabled
   const handleMouseEnter = () => {
     setShowtooltip(true);
   };
+  // on mouse leave tooltip will leave
   const handleMouseLeave = () => {
     setShowtooltip(false);
   };
 
   return (
     <div className={`${parentClass}`}>
+      {/* input label */}
       {label && (
         <label
           className={`block mb-2 text-sm lg:text-base font-medium text-[#2D384B] ${labelClass}`}
@@ -113,25 +107,14 @@ const InputField = memo((props) => {
           </p>
         )}
         <input
+          {...attributes}
           type={validInput}
           value={value}
           name={name}
           id={id}
           placeholder={placeholder}
-          required={required}
-          defaultChecked={checked}
-          disabled={disabled}
           min={min}
           max={max}
-          onChange={onChange}
-          onClick={onClick}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onKeyDown={onKeyDown}
-          onKeyUp={onKeyUp}
-          onSubmit={onSubmit}
           className={`${inputFieldClass} ${
             iconPosition === "left" && "ps-10"
           } ${iconPosition === "right" && "pe-6"} ${
@@ -142,6 +125,7 @@ const InputField = memo((props) => {
         />
       </div>
 
+      {/* error message */}
       {errorMessage && (
         <p className={`mt-1 md:mt-2 text-sm text-red-500 ${errorMessageClass}`}>
           {errorMessage}
