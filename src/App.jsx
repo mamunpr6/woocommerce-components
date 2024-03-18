@@ -11,6 +11,7 @@ import SelectButton from "./components/SelectButton/SelectButton";
 
 function App() {
   const [datas, setDatas] = useState(null);
+  const [selected, setSelected] = useState("");
 
   // fetching data for options in select button
   useEffect(() => {
@@ -34,7 +35,11 @@ function App() {
 
       <Textarea></Textarea>
 
-      <SelectButton datas={datas}></SelectButton>
+      <SelectButton
+        datas={datas}
+        selected={selected}
+        setSelected={setSelected}
+      ></SelectButton>
 
       <ToggleButton></ToggleButton>
 

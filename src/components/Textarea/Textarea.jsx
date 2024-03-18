@@ -14,6 +14,7 @@ const Textarea = memo((props) => {
     labelClass = "",
     rows = 10,
     cols = 30,
+    ...attributes
   } = props;
 
   // className for textarea
@@ -38,6 +39,7 @@ const Textarea = memo((props) => {
         placeholder={placeholder}
         rows={rows}
         cols={cols}
+        {...attributes}
         className={`${textareaClass} ${
           errorMessage
             ? " border-[#FDA29B] focus:border-[#FDA29B] focus:ring-4 focus:ring-[#FEE4E2] "
