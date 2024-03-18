@@ -21,9 +21,7 @@ const Button = memo((props) => {
 
   // classNames
   let buttonClass =
-    "flex items-center justify-center gap-2 text-base bg-blue-400 disabled:bg-gray-300 hover:bg-blue-600 duration-200 rounded-md text-white font-semibold focus:border-2 focus:border-blue-200 outline-none";
-
-  // bg-blue-400 hover:bg-blue-600 focus:border-blue-200
+    "flex items-center justify-center gap-1 md:gap-2 text-base bg-blue-400 disabled:bg-gray-300 hover:bg-blue-600 duration-200 rounded-md text-white font-semibold focus:border-2 focus:border-blue-200 outline-none";
 
   let sizeClass = "";
   let color = "";
@@ -34,13 +32,13 @@ const Button = memo((props) => {
       sizeClass = "px-3 py-2";
       break;
     case "medium":
-      sizeClass = "px-4 py-2";
+      sizeClass = "px-3 md:px-4 py-2";
       break;
     case "large":
-      sizeClass = "px-6 py-3";
+      sizeClass = "px-3 md:px-4 lg:px-6 py-2 lg:py-3";
       break;
     default:
-      sizeClass = "px-4 py-2";
+      sizeClass = "px-3 md:px-4 py-2";
   }
 
   //switch case to define button type

@@ -8,6 +8,8 @@ import RadioButton from "./components/RadioButton/RadioButton";
 import Button from "./components/Button/Button";
 import spinner from "./assets/spinner.png";
 import SelectButton from "./components/SelectButton/SelectButton";
+import CheckBoxGroup from "./components/CheckBoxGroup/CheckBoxGroup";
+import CheckBoxGroup2 from "./components/CheckBoxGroup2/CheckBoxGroup2";
 
 function App() {
   const [datas, setDatas] = useState(null);
@@ -46,6 +48,10 @@ function App() {
       <Checkbox></Checkbox>
 
       <RadioButton></RadioButton>
+
+      <CheckBoxGroup></CheckBoxGroup>
+
+      <CheckBoxGroup2></CheckBoxGroup2>
     </div>
   );
 }

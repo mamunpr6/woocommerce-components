@@ -6,6 +6,9 @@ const SelectButton = memo((props) => {
     datas,
     label = "Select your country",
     labelClass = "",
+    buttonClass = "",
+    selectClass = "",
+    selectItemClass = "",
     dataIcon = (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,16 +46,6 @@ const SelectButton = memo((props) => {
   // state toggle drop down
   const [open, setOpen] = useState(false);
 
-  const buttonClass = `w-full p-2 text-base flex items-center justify-between  border border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF] outline-none ${
-    open ? "rounded-t-md" : "rounded-md"
-  } ${!selected && "text-[#777777]"}`;
-
-  const listClass = `absolute w-full border border-[#E1E6EF]  rounded-b-md z-20 max-h-60 overflow-y-auto bg-white ${
-    open ? "block" : "hidden"
-  }`;
-
-  const listItemClass = `p-2 flex flex-row items-center justify-between gap-2 text-sm hover:bg-[#F5F9FE] hover:text-black`;
-
   // for toggle dropdown
   const toggleDropdown = () => {
     setOpen(!open);
@@ -81,7 +74,9 @@ const SelectButton = memo((props) => {
         </label>
       )}
       <div
-        className={`${buttonClass}`}
+        className={`w-full p-2 text-base flex items-center justify-between  border border-[#E1E6EF] focus:border-[#B9CCEB] ring-[#E1E6EF] focus:ring-4 focus:ring-[#E4EEFF] outline-none ${
+          open ? "rounded-t-md" : "rounded-md"
+        } ${!selected && "text-[#777777]"} ${buttonClass}`}
         tabIndex={0}
         onClick={toggleDropdown}
         onKeyDown={handleKeyDown}
@@ -124,14 +119,16 @@ const SelectButton = memo((props) => {
       <ul
         role="listbox"
         aria-labelledby="options-list"
-        className={`${listClass}`}
+        className={`absolute w-full border border-[#E1E6EF]  rounded-b-md z-20 max-h-60 overflow-y-auto bg-white ${
+          open ? "block" : "hidden"
+        } ${selectClass}`}
       >
         {datas?.map((data) => (
           <li
-            className={`${listItemClass} ${
+            className={`p-2 flex flex-row items-center justify-between gap-2 text-sm hover:bg-[#F5F9FE] hover:text-black ${
               data?.name?.toLowerCase() === selected?.toLowerCase() &&
               "bg-[#F5F9FE] text-[#2D384B]"
-            }`}
+            } ${selectItemClass}`}
             key={data?.name}
             role="option"
             aria-selected={data?.name === selected}
