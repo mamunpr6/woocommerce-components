@@ -1,9 +1,17 @@
 import React, { memo } from "react";
 /**
  * JSX button component independent and reusable.
- * The button props are children, className, iconPosition and any valid attribute we want to use.
+ * The button props are children, className, iconPosition, size, buttonType, and any other valid attribute we want to use.
  *
- * @return {JSX.Element} - Button component.
+ * @param {object} props - Component props.
+ * @param {React.ReactNode} props.children - The content of the button.
+ * @param {string} props.className - Additional classes to apply to the button.
+ * @param {string} [props.iconPosition="right"] - Position of the icon relative to the text ("right" or "left").
+ * @param {string} [props.size="small"] - Size of the button ("small", "medium", or "large").
+ * @param {string} [props.buttonType="info"] - Type of the button ("primary", "secondary", "success", "danger", "warning", or "info").
+ * @param {...any} [props.attributes] - Any other valid attributes to be applied to the button.
+ *
+ * @returns {JSX.Element} - Button component.
  *
  * @since 1.0.0
  */

@@ -1,5 +1,28 @@
 import React, { memo } from "react";
 
+/**
+ * JSX textarea component independent and reusable.
+ * The textarea props are value, id, name, placeholder, errorMessage, label, className, parentClass, labelClass, rows, cols, and any other valid attribute we want to use.
+ *
+ * @param {object} props - Component props.
+ * @param {string} props.value - Value of the textarea.
+ * @param {string} [props.id="textarea"] - ID attribute of the textarea.
+ * @param {string} [props.name="textarea"] - Name attribute of the textarea.
+ * @param {string} [props.placeholder="Enter Your Message"] - Placeholder text of the textarea.
+ * @param {string} [props.errorMessage=""] - Error message to display.
+ * @param {string} [props.label="Write your message..."] - Label text for the textarea.
+ * @param {string} [props.className=""] - Additional classes to apply to the textarea.
+ * @param {string} [props.parentClass=""] - Additional classes to apply to the parent container of the textarea.
+ * @param {string} [props.labelClass=""] - Additional classes to apply to the label of the textarea.
+ * @param {number} [props.rows=10] - Number of visible text lines.
+ * @param {number} [props.cols=30] - Number of visible text columns.
+ * @param {...any} [props.attributes] - Any other valid attributes to be applied to the textarea.
+ *
+ * @returns {JSX.Element} - Textarea component.
+ *
+ * @since 1.0.0
+ */
+
 const Textarea = memo((props) => {
   // destructuring props
   const {
