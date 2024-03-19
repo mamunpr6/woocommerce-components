@@ -9,8 +9,6 @@ import Button from "./components/Button/Button";
 import spinner from "./assets/spinner.png";
 import SelectButton from "./components/SelectButton/SelectButton";
 import CheckBoxGroup from "./components/CheckBoxGroup/CheckBoxGroup";
-import CheckBoxGroup2 from "./components/CheckBoxGroup2/CheckBoxGroup2";
-import CheckboxGroup3 from "./components/CheckboxGroup3/CheckboxGroup3";
 
 function App() {
   const [datas, setDatas] = useState(null);
@@ -51,10 +49,6 @@ function App() {
       <RadioButton></RadioButton>
 
       <CheckBoxGroup></CheckBoxGroup>
-
-      <CheckBoxGroup2></CheckBoxGroup2>
-
-      <CheckboxGroup3 />
     </div>
   );
 }
