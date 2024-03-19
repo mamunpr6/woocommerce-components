@@ -40,25 +40,9 @@ const Checkbox = memo((props) => {
     console.log(isChecked);
   };
 
-  let sizeClass = ""; //checkbox size
   let color = ""; //checkbox color
   let iconColor = ""; //checkbox icon color
   let checkedBackground = ""; //background color for rounded checkbox
-
-  // switch case to define button size
-  switch (size) {
-    case "small":
-      sizeClass = "w-4 h-4";
-      break;
-    case "medium":
-      sizeClass = "w-4 md:w-5 h-4 md:h-5";
-      break;
-    case "large":
-      sizeClass = "w-4 md:w-5 lg:w-6 h-4 md:h-5 lg:h-6";
-      break;
-    default:
-      sizeClass = "w-4 h-4";
-  }
 
   // switch case to define button type
   switch (buttonType) {
@@ -108,7 +92,7 @@ const Checkbox = memo((props) => {
   return (
     <div className={`relative w-full flex items-center gap-2 ${parentClass}`}>
       <input
-        className={`absolute right-3 top-4 peer shrink-0 appearance-none border border-[#E1E6EF] disabled:border-[#EAECF0] rounded bg-white disabled:bg-[#F2F4F7] mt-0  focus:outline-none focus:ring-offset-0 focus:ring-4 focus:ring-[#E8F1FF] focus:border-[#216DF0] ${sizeClass} ${
+        className={`absolute right-3 top-4 peer shrink-0 appearance-none border border-[#E1E6EF] disabled:border-[#EAECF0] rounded bg-white disabled:bg-[#F2F4F7] mt-0  focus:outline-none focus:ring-offset-0 focus:ring-4 focus:ring-[#E8F1FF] focus:border-[#216DF0] w-4 md:w-5 lg:w-6 h-4 md:h-5 lg:h-6 ${
           rounded && `rounded-[50%] p-0.5 ${checkedBackground}`
         } ${color} ${className}`}
         type="checkbox"
@@ -124,13 +108,13 @@ const Checkbox = memo((props) => {
       <span
         className={`absolute right-3 top-4 mt-0 p-0.5 hidden peer-checked:block pointer-events-none ${
           rounded ? "peer-checked:text-white" : iconColor
-        } disabled:peer-checked:text-[#EAECF0] ${sizeClass} `}
+        } disabled:peer-checked:text-[#EAECF0] w-4 md:w-5 lg:w-6 h-4 md:h-5 lg:h-6 `}
       >
         {checkboxIcon}
       </span>
       <label
         htmlFor={id}
-        className={`flex w-full items-start gap-2 md:gap-4 p-4 rounded-xl bg-white border border-[#E1E6EF] peer-checked:border-[#5992F3]  peer-checked:bg-[#F1F6FF] peer-disabled:bg-[#EAECF0] peer-focus:border-[#B9CCEB] peer-focus:ring-2  cursor-pointer transition focus:ring-offset-0 focus:ring-[#F1F6FF]`}
+        className={`flex w-full items-start gap-2 md:gap-4 p-4 rounded-xl     cursor-pointer transition  bg-white peer-checked:bg-[#F1F6FF] peer-disabled:bg-[#EAECF0]  border border-[#E1E6EF]  peer-focus:border-[#82ADF6] peer-checked:ring-2 peer-checked:ring-blue-100`}
       >
         <span className="text-[#216DF0] p-1 bg-[#DDEBFF] rounded-full border-4 border-[#F1F7FF]">
           <svg
@@ -149,7 +133,7 @@ const Checkbox = memo((props) => {
           </svg>
         </span>
         <div>
-          <h6 className="text-base text-black">
+          <h2 className="text-base text-black">
             Basic Plan
             <span
               className={`ms-1 text-sm text-[#838B99] ${
@@ -158,15 +142,15 @@ const Checkbox = memo((props) => {
             >
               $10/month
             </span>
-          </h6>
-          <span
+          </h2>
+          <p
             className={`text-sm text-[#838B99] ${
               isChecked && "!text-[#216DF0]"
             }`}
           >
             Includes up to 10 users, 20GB indiviual data and access to all
             features.
-          </span>
+          </p>
         </div>
       </label>
     </div>
