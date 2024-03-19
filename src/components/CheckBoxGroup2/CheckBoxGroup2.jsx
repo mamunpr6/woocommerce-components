@@ -3,9 +3,14 @@ import React from "react";
 const CheckBoxGroup2 = () => {
   return (
     <div className="relative">
-      <input type="radio" name="user" id="user1" className="hidden peer" />
+      <input
+        type="checkbox"
+        name="user"
+        id="checkbox2"
+        className="hidden peer"
+      />
       <label
-        htmlFor="user1"
+        htmlFor="checkbox2"
         className="flex flex-col gap-2 rounded-xl bg-white border border-[#E1E6EF] peer-checked:border-[#5992F3]  peer-checked:bg-[#F1F6FF] peer-focus:border-[#B9CCEB] cursor-pointer transition"
       >
         <div className="flex items-center gap-2 p-4">
